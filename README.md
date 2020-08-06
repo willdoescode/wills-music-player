@@ -1,4 +1,7 @@
-# pretty-nice-vue
+<h1 align="center">Wills Music Player</h1>
+<p align="center">
+<img src="assets/1.png">
+</p>
 
 ## Project setup
 ```
