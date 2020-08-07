@@ -14,7 +14,7 @@
         </div>
         <div class="seek">
           <div class="current" :class="typeof currentTime === 'number' ? 'visible' : 'hidden'">Current Time: {{ Math.floor(currentTime / 60) }}:{{ Math.floor(currentTime % 60) }}</div>
-          <input :class="isPlaying ? 'visible' : 'hidden'" type="range" id="seek" :value="currentTime" :max="this.duration" @change="seek" />
+          <input :class="isPlaying ? 'visible' : 'hidden'" type="range" id="seek" :value="currentTime" :max="this.duration" @mousedown="pause" @mouseup="seek" />
           <div class="length" :class="typeof this.duration === 'number' ? 'visible' : 'hidden'">Song duration: {{ Math.round(this.duration / 60) }}:{{ Math.round(this.duration % 60) }}</div>
         </div>
       </section>
@@ -95,6 +95,7 @@ export default {
     },
     seek(e) {
       this.currentTime = e.target.value
+      this.play(this.current)
       this.player.currentTime = Number(this.currentTime)
     }
   },
