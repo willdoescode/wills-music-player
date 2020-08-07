@@ -13,10 +13,9 @@
           <button class="next" @click="next">Next</button>
         </div>
         <div class="seek">
-          <div class="current" v-if="typeof this.currentTime === 'number'">{{ Math.round(currentTime / 60) }}:{{ Math.round(currentTime % 60) }}</div>
-          <div class="placeholder" v-else>0:00</div>
-          <div class="length" v-if="typeof this.duration === 'number'">{{ Math.round(this.duration / 60)}}:{{ Math.round(this.duration % 60)}}</div>
-          <div class="placeholder" v-else>0:00</div>
+          <div class="current" :class="typeof currentTime === 'number' ? 'visible' : 'hidden'">{{ Math.floor(currentTime / 60) }}:{{ Math.floor(currentTime % 60) }}</div>
+          <input  type="range" id="seek" :value="currentTime" :max="this.duration" @change="seek" />
+          <div class="length" :class="typeof this.duration === 'number' ? 'visible' : 'hidden'">{{ Math.floor((this.duration - currentTime) / 60)}}:{{ Math.floor((this.duration - currentTime) % 60 )}}</div>
         </div>
       </section>
       <section class="playlist">
@@ -40,6 +39,7 @@ export default {
       player: new Audio(),
       duration: Number,
       currentTime: String,
+      sliderTime: Number,
       songs:[
         {
           title: 'Hurricane',
@@ -93,6 +93,10 @@ export default {
     },
     updateTime() {
       this.currentTime = this.player.currentTime
+    },
+    seek(e) {
+      this.currentTime = e.target.value
+      this.player.currentTime = Number(this.currentTime)
     }
   },
   created() {
@@ -102,7 +106,7 @@ export default {
       this.duration = this.player.duration
       setInterval(this.updateTime, 1000)
     }.bind(this))
-  },
+  }
 }
 </script>
 
@@ -248,13 +252,14 @@ button:hover {
 
 .seek {
   margin: 0;
-  padding: 0;
-  display: block;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.seek .placeholder, .length {
-  padding-bottom: 20px;
+.seek .hidden {
+  color: transparent;
 }
-
 </style>
