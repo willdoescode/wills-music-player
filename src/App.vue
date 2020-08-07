@@ -300,7 +300,7 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -9.5px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #3071A9;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
 }
 input[type=range]::-moz-range-track {
   width: 100%;
@@ -308,7 +308,7 @@ input[type=range]::-moz-range-track {
   cursor: pointer;
   animate: 0.2s;
   box-shadow: 1px 1px 1px #000000;
-  background: #3071A9;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
   border-radius: 0px;
   border: 1px solid #000000;
 }
@@ -331,13 +331,13 @@ input[type=range]::-ms-track {
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-  background: #3071A9;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
   border: 1px solid #000000;
   border-radius: 0px;
   box-shadow: 1px 1px 1px #000000;
 }
 input[type=range]::-ms-fill-upper {
-  background: #3071A9;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
   border: 1px solid #000000;
   border-radius: 0px;
   box-shadow: 1px 1px 1px #000000;
@@ -353,9 +353,9 @@ input[type=range]::-ms-thumb {
   cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
-  background: #3071A9;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
 }
 input[type=range]:focus::-ms-fill-upper {
-  background: #3071A9;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
 }
 </style>
