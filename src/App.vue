@@ -13,9 +13,9 @@
           <button class="next" @click="next">Next</button>
         </div>
         <div class="seek">
-          <div class="current" :class="typeof currentTime === 'number' ? 'visible' : 'hidden'">{{ Math.floor(currentTime / 60) }}:{{ Math.floor(currentTime % 60) }}</div>
-          <input  type="range" id="seek" :value="currentTime" :max="this.duration" @change="seek" />
-          <div class="length" :class="typeof this.duration === 'number' ? 'visible' : 'hidden'">{{ Math.floor((this.duration - currentTime) / 60)}}:{{ Math.floor((this.duration - currentTime) % 60 )}}</div>
+          <div class="current" :class="typeof currentTime === 'number' ? 'visible' : 'hidden'">Current Time: {{ Math.floor(currentTime / 60) }}:{{ Math.floor(currentTime % 60) }}</div>
+          <input :class="isPlaying ? 'visible' : 'hidden'" type="range" id="seek" :value="currentTime" :max="this.duration" @change="seek" />
+          <div class="length" :class="typeof this.duration === 'number' ? 'visible' : 'hidden'">Song duration: {{ Math.round(this.duration / 60) }}:{{ Math.round(this.duration % 60) }}</div>
         </div>
       </section>
       <section class="playlist">
@@ -39,7 +39,6 @@ export default {
       player: new Audio(),
       duration: Number,
       currentTime: String,
-      sliderTime: Number,
       songs:[
         {
           title: 'Hurricane',
@@ -217,7 +216,7 @@ button:hover {
 }
 
 .playlist {
-  padding: 0 30px;
+  padding: 40px 30px;
 }
 
 .playlist h3 {
@@ -253,13 +252,109 @@ button:hover {
 .seek {
   margin: 0;
   padding: 10px;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
+.seek div {
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
 .seek .hidden {
   color: transparent;
+}
+
+input[type=range] {
+  height: 38px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 13px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background-image: linear-gradient(to right, lightpink, lightcoral);
+  border-radius: 0px;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -9.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #3071A9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 13px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #3071A9;
+  border-radius: 0px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 13px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #3071A9;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071A9;
+  border: 1px solid #000000;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071A9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #3071A9;
 }
 </style>
