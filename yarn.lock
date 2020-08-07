@@ -1747,7 +1747,12 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bluebird@^3.1.1, bluebird@^3.5.5:
+bluebird-co@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/bluebird-co/-/bluebird-co-2.2.0.tgz#e0a49e63b6b17e34c91f48b3934b769a377fbed7"
+  integrity sha1-4KSeY7axfjTJH0izk0t2mjd/vtc=
+
+bluebird@^3.1.1, bluebird@^3.5.1, bluebird@^3.5.5:
   version "3.7.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
@@ -3813,6 +3818,11 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
+get-mp3-duration@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/get-mp3-duration/-/get-mp3-duration-1.0.0.tgz#471efca0f9e4930e7866016f6078582f4ce934cb"
+  integrity sha1-Rx78oPnkkw54ZgFvYHhYL0zpNMs=
+
 get-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
@@ -5261,6 +5271,14 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
+
+mp3-duration@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mp3-duration/-/mp3-duration-1.1.0.tgz#c002e4e454448060873660abb4da7d10118d0e9c"
+  integrity sha1-wALk5FREgGCHNmCrtNp9EBGNDpw=
+  dependencies:
+    bluebird "^3.5.1"
+    bluebird-co "^2.2.0"
 
 ms@2.0.0:
   version "2.0.0"

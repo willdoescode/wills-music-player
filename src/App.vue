@@ -12,6 +12,12 @@
           <button class="pause" v-else @click="pause">Pause</button>
           <button class="next" @click="next">Next</button>
         </div>
+        <div class="seek">
+          <div class="current" v-if="typeof this.currentTime === 'number'">{{ Math.round(currentTime / 60) }}:{{ Math.round(currentTime % 60) }}</div>
+          <div class="placeholder" v-else>0:00</div>
+          <div class="length" v-if="typeof this.duration === 'number'">{{ Math.round(this.duration / 60)}}:{{ Math.round(this.duration % 60)}}</div>
+          <div class="placeholder" v-else>0:00</div>
+        </div>
       </section>
       <section class="playlist">
         <h3>The Playlist</h3>
@@ -24,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data() {
@@ -32,6 +37,9 @@ export default {
       current: {},
       index: 0,
       isPlaying: false,
+      player: new Audio(),
+      duration: Number,
+      currentTime: String,
       songs:[
         {
           title: 'Hurricane',
@@ -44,7 +52,6 @@ export default {
           src: require('@/assets/INXS-Need-You-Tonight.mp3')
         }
       ],
-      player: new Audio(),
     }
   },
   methods: {
@@ -83,11 +90,18 @@ export default {
       }
       this.current = this.songs[this.index]
       this.play(this.current)
+    },
+    updateTime() {
+      this.currentTime = this.player.currentTime
     }
   },
   created() {
     this.current = this.songs[this.index]
     this.player.src = this.current.src
+    this.player.addEventListener('playing', function () {
+      this.duration = this.player.duration
+      setInterval(this.updateTime, 1000)
+    }.bind(this))
   },
 }
 </script>
@@ -231,4 +245,16 @@ button:hover {
   color: white;
   background-image: linear-gradient(to right, red, lightcoral);
 }
+
+.seek {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+
+.seek .placeholder, .length {
+  padding-bottom: 20px;
+}
+
 </style>
