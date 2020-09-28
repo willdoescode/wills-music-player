@@ -13,7 +13,7 @@ yarn install
 yarn serve
 ```
 
-### Compiles and minifies for production I really need thiasdhfkshfkjshdfs
+### Compiles and minifies for production
 ```
 yarn build
 ```
