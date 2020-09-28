@@ -13,7 +13,7 @@ yarn install
 yarn serve
 ```
 
-### Compiles and minifies for production i agree
+### Compiles and minifies for production I really need this
 ```
 yarn build
 ```
