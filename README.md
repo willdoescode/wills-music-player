@@ -12,7 +12,6 @@ yarn install
 ```
 yarn serve
 ```
-hahhaha
 
 ### Compiles and minifies for production
 ```
